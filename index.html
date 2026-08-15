@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello World</title>
-
-    <!-- Google reCAPTCHA script -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <title>Hello World</title>
+  <!-- Google reCAPTCHA script -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
-    <h1>Hello EARTH!!!</h1>
-    <p>My first website is live!</p>
+  <h1>Hello EARTH!!!</h1>
+  <p>My first website is live!</p>
 
-    <form>
-        <div class="g-recaptcha" data-sitekey="6Lcq64YtAAAAABXXdrhS53kyNy9LJv6lNiNOFBk2"></div>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
+  <form>
+    <div class="g-recaptcha" data-sitekey="6Lcq64YtAAAAABXXdrhS53kyNy9LJv6lN1N0FBk2"></div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <button id="google-login">Sign in with Google</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    // Paste your exact firebaseConfig object from Firebase here:
+    const firebaseConfig = {
+      apiKey: "YAIzaSyD1hs5XqCo5qoINGOd2YfGaQZiVS3WzDpg",
+      authDomain: "hello-world-auth-89098.firebaseapp.com",
+      projectId: "hello-world-auth-89098",
+      storageBucket: "hello-world-auth-89098.appspot.com",
+      messagingSenderId: "104950291053",
+      appId: "1:1049502910533:web:7ffa7279b737841707bb2c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    document.getElementById("google-login").addEventListener("click", () => {
+      signInWithPopup(auth, provider)
+        .then((result) => alert(`Logged in as ${result.user.displayName}!`))
+        .catch((error) => console.error(error));
+    });
+  </script>
 </body>
 </html>
