@@ -38,7 +38,9 @@
 
     document.getElementById("google-login").addEventListener("click", () => {
       signInWithPopup(auth, provider)
-        .then((result) => alert(`Logged in as ${result.user.displayName}!`))
+        .then(() => {
+    window.location.href = "hello-earth.html";
+})
         .catch((error) => console.error(error));
     });
   </script>
