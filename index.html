@@ -37,12 +37,12 @@
     const provider = new GoogleAuthProvider();
 
     document.getElementById("google-login").addEventListener("click", () => {
-      signInWithPopup(auth, provider)
-        .then(result => {
-    window.location.href = "success.html";
-})
-        .catch((error) => console.error(error));
-    });
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      window.location.href = "success.html";
+    })
+    .catch((error) => console.error(error));
+});
   </script>
 </body>
 </html>
