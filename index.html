@@ -38,8 +38,8 @@
 
     document.getElementById("google-login").addEventListener("click", () => {
       signInWithPopup(auth, provider)
-        .then(() => {
-    window.location.href = "hello-earth.html";
+        .then(result => {
+    window.location.href = "success.html";
 })
         .catch((error) => console.error(error));
     });
